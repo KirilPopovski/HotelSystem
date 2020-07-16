@@ -1,4 +1,4 @@
-﻿namespace HotelSystem.Services.Identity
+﻿namespace HotelSystem.Identity.Services.Identity
 {
     using Data.Models;
 

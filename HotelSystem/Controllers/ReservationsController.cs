@@ -1,6 +1,7 @@
-﻿using HotelSystem.Models.Reservations;
+﻿using HotelSystem.Common.Controllers;
+using HotelSystem.Common.Services.Identity;
+using HotelSystem.Models.Reservations;
 using HotelSystem.Services.Guests;
-using HotelSystem.Services.Identity;
 using HotelSystem.Services.Reservations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

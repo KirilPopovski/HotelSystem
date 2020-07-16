@@ -1,11 +1,9 @@
-﻿namespace HotelSystem.Models.Identity
+﻿namespace HotelSystem.Identity.Models.Identity
 {
     using System.ComponentModel.DataAnnotations;
 
     public class ChangePasswordInputModel
     {
-        public string UserId { get; set; }
-
         public string CurrentPassword { get; set; }
 
         public string NewPassword { get; set; }

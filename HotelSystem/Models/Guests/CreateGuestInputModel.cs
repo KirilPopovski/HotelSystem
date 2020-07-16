@@ -1,8 +1,12 @@
-﻿namespace HotelSystem.Models.Identity
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-    public class CreateUserInputModel : UserInputModel
+namespace HotelSystem.Models.Guests
+{
+    public class CreateGuestInputModel
     {
         [Required]
         [MinLength(7)]

@@ -10,9 +10,9 @@ namespace HotelSystem.Services.Home
 {
     public class HomeService : IHomeService
     {
-        private readonly HotelSystemDbContext db;
+        private readonly GuestsDbContext db;
 
-        public HomeService(HotelSystemDbContext db)
+        public HomeService(GuestsDbContext db)
         {
             this.db = db;
         }

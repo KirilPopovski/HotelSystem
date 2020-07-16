@@ -11,9 +11,9 @@ namespace HotelSystem.Services.Reservations
 {
     public class ReservationsService : IReservationService
     {
-        private readonly HotelSystemDbContext db;
+        private readonly GuestsDbContext db;
 
-        public ReservationsService(HotelSystemDbContext db)
+        public ReservationsService(GuestsDbContext db)
         {
             this.db = db;
         }

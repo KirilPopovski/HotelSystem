@@ -1,8 +1,9 @@
-﻿namespace HotelSystem.Services.Identity
+﻿namespace HotelSystem.Identity.Services.Identity
 {
     using System.Linq;
     using System.Threading.Tasks;
     using Data.Models;
+    using HotelSystem.Common.Services;
     using Microsoft.AspNetCore.Identity;
     using Models.Identity;
 
@@ -55,9 +56,9 @@
             return new LoginSuccessModel(user.Id, token);
         }
 
-        public async Task<Result> ChangePassword(ChangePasswordInputModel changePasswordInput)
+        public async Task<Result> ChangePassword(string UserId, ChangePasswordInputModel changePasswordInput)
         {
-            var user = await this.userManager.FindByIdAsync(changePasswordInput.UserId);
+            var user = await this.userManager.FindByIdAsync(UserId);
 
             if (user == null)
             {

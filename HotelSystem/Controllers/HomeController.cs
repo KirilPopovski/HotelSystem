@@ -1,9 +1,7 @@
-﻿using HotelSystem.Models.Home;
+﻿using HotelSystem.Common.Controllers;
+using HotelSystem.Models.Home;
 using HotelSystem.Services.Home;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace HotelSystem.Controllers

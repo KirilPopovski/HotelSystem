@@ -34,8 +34,7 @@
 
         public ICollection<Reservation> Reservations { get; set; }
 
-        public ApplicationUser User { get; set; }
-
+        [Required]
         public string ApplicationUserId { get; set; }
     }
 }

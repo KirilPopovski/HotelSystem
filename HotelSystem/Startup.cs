@@ -1,25 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using HotelSystem.Common;
 using HotelSystem.Data;
-using HotelSystem.Data.Models;
 using HotelSystem.Services.Guests;
 using HotelSystem.Services.Home;
-using HotelSystem.Services.Identity;
 using HotelSystem.Services.Reservations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HotelSystem
@@ -36,19 +27,10 @@ namespace HotelSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<HotelSystemDbContext>(
+            services.AddDbContext<GuestsDbContext>(
                 options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services
-                .AddIdentity<ApplicationUser, IdentityRole>(options =>
-                {
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                })
-                .AddEntityFrameworkStores<HotelSystemDbContext>();
+            
 
             var secret = this.Configuration
                 .GetSection(nameof(ApplicationSettings))
@@ -79,12 +61,9 @@ namespace HotelSystem
                     };
                 });
 
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddTransient<IGuestsService, GuestsService>();
             services.AddTransient<IReservationService, ReservationsService>();
-            services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IHomeService, HomeService>();
-            services.AddTransient<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
 
             services.AddControllers();
         }

@@ -1,10 +1,11 @@
-﻿namespace HotelSystem.Services.Identity
+﻿namespace HotelSystem.Identity.Services.Identity
 {
     using System;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
     using Data.Models;
+    using HotelSystem.Common;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
 

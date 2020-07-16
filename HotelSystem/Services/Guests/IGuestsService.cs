@@ -12,5 +12,7 @@ namespace HotelSystem.Services.Guests
         public Task Save(Guest guest);
 
         public Task<int> GetIdByUser(string userId);
+
+        public Task<Guest> FindByUser(string userId);
     }
 }

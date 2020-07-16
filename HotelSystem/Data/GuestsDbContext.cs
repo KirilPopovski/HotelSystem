@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.Data
 {
-    public class HotelSystemDbContext : IdentityDbContext<ApplicationUser>
+    public class GuestsDbContext : DbContext
     {
-        public HotelSystemDbContext(DbContextOptions<HotelSystemDbContext> options)
+        public GuestsDbContext(DbContextOptions<GuestsDbContext> options)
             : base(options)
         {
         }
@@ -26,18 +26,5 @@ namespace HotelSystem.Data
         public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Service> Services { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-
-            builder.Entity<ApplicationUser>()
-                .HasOne(au => au.Guest)
-                .WithOne(g => g.User)
-                .HasForeignKey<Guest>(g => g.ApplicationUserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
-
-        }
     }
 }

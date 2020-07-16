@@ -1,4 +1,4 @@
-﻿namespace HotelSystem.Services
+﻿namespace HotelSystem.Common.Services
 {
     using System;
     using System.Collections.Generic;

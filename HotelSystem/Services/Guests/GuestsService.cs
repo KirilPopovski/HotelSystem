@@ -9,9 +9,9 @@ namespace HotelSystem.Services.Guests
 {
     public class GuestsService : IGuestsService
     {
-        private readonly HotelSystemDbContext db;
+        private readonly GuestsDbContext db;
 
-        public GuestsService(HotelSystemDbContext db)
+        public GuestsService(GuestsDbContext db)
         {
             this.db = db;
         }
@@ -22,6 +22,12 @@ namespace HotelSystem.Services.Guests
             await db.SaveChangesAsync();
         }
 
+        public async Task<Guest> FindByUser(string userId)
+        {
+            var guest = await this.db.Guests.FirstOrDefaultAsync(x => x.ApplicationUserId == userId);
+            return guest;
+        }
+
         public int GetContactsId(string email)
         {
             int result = db.GuestContacts.FirstOrDefault(x => x.Email == email).Id;
@@ -30,13 +36,12 @@ namespace HotelSystem.Services.Guests
 
         public async Task<int> GetIdByUser(string userId)
         {
-            var res =  await db.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            var res = await db.Guests.FirstOrDefaultAsync(x => x.ApplicationUserId == userId);
             if (res == null)
             {
                 throw new InvalidOperationException("This user is not a guest.");
             }
-            var res2 = await db.Guests.FirstOrDefaultAsync(x => x.User.Id == res.Id);
-            int result = res2.Id;
+            int result = res.Id;
             return result;
         }
 

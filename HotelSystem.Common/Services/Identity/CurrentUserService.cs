@@ -1,4 +1,4 @@
-﻿namespace HotelSystem.Services.Identity
+﻿namespace HotelSystem.Common.Services.Identity
 {
     using System;
     using System.Security.Claims;

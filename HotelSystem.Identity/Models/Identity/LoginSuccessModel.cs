@@ -1,4 +1,4 @@
-﻿namespace HotelSystem.Models.Identity
+﻿namespace HotelSystem.Identity.Models.Identity
 {
     public class LoginSuccessModel
     {
