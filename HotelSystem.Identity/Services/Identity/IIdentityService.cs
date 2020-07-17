@@ -9,7 +9,7 @@
     {
         Task<Result<ApplicationUser>> Register(UserInputModel userInput);
 
-        Task<Result<LoginSuccessModel>> Login(UserInputModel userInput);
+        Task<Result<UserOutputModel>> Login(UserInputModel userInput);
 
         Task<Result> ChangePassword(string UserId, ChangePasswordInputModel changePasswordInput);
     }

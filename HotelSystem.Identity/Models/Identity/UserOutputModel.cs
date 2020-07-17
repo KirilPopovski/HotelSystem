@@ -1,8 +1,8 @@
 ﻿namespace HotelSystem.Identity.Models.Identity
 {
-    public class LoginOutputModel
+    public class UserOutputModel
     {
-        public LoginOutputModel(string token)
+        public UserOutputModel(string token)
         {
             this.Token = token;
         }

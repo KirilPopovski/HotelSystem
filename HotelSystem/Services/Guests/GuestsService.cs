@@ -45,6 +45,9 @@ namespace HotelSystem.Services.Guests
             return result;
         }
 
+        public async Task<bool> IsGuest(string userId)
+            => await db.Guests.AnyAsync(g => g.ApplicationUserId == userId);
+
         public async Task Save(Guest guest)
         {
             await db.Guests.AddAsync(guest);

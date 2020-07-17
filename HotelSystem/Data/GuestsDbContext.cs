@@ -1,5 +1,4 @@
 ﻿using HotelSystem.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.Data

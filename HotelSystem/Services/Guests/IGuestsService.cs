@@ -14,5 +14,8 @@ namespace HotelSystem.Services.Guests
         public Task<int> GetIdByUser(string userId);
 
         public Task<Guest> FindByUser(string userId);
+
+
+        public Task<bool> IsGuest(string userId);
     }
 }

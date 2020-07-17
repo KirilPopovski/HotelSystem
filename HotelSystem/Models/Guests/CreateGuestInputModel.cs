@@ -8,6 +8,12 @@ namespace HotelSystem.Models.Guests
 {
     public class CreateGuestInputModel
     {
+        [EmailAddress]
+        [Required]
+        [MinLength(10)]
+        [MaxLength(50)]
+        public string Email { get; set; }
+
         [Required]
         [MinLength(7)]
         [MaxLength(50)]
