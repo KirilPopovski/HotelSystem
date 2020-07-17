@@ -28,7 +28,7 @@ namespace HotelSystem.Controllers
         [Authorize]
         public async Task<ActionResult<AllReservationsViewModel>> Index()
         {
-            var guestId = 1; //await guestsService.GetIdByUser(currentUser.UserId);
+            var guestId = await guestsService.GetIdByUser(currentUser.UserId);
             var reservations = await reservationService.GetAllReservations(guestId);
             var result = new AllReservationsViewModel { Reservations = reservations.ToList() };
             return Ok(result);
@@ -39,7 +39,7 @@ namespace HotelSystem.Controllers
         [Route(nameof(New))]
         public async Task<IActionResult> New(ReservationInputModel input)
         {
-            var guestId = await guestsService.GetIdByUser("1"/*currentUser.UserId*/);
+            var guestId = await guestsService.GetIdByUser(currentUser.UserId);
             var result = await this.reservationService.AddReservation(input.ChechIn, input.CheckOut, input.HotelName, input.NumberOfPeople, guestId);
             if (result >= 0)
             {
