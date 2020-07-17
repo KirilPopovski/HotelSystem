@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Identity", "Hot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Common", "HotelSystem.Common\HotelSystem.Common.csproj", "{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Statistics", "HotelSystem.Statistics\HotelSystem.Statistics.csproj", "{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
