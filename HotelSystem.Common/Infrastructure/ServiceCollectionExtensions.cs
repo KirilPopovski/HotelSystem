@@ -24,7 +24,9 @@ namespace HotelSystem.Common.Infrastructure
             public static IServiceCollection AddDatabase<TDbContext>(this IServiceCollection services, IConfiguration configuration)
             where TDbContext : DbContext
         {
-            services.AddDbContext<TDbContext>(
+            services
+                .AddScoped<DbContext, TDbContext>()
+                .AddDbContext<TDbContext>(
                 options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             return services;
         }
@@ -66,6 +68,7 @@ namespace HotelSystem.Common.Infrastructure
                     };
                 });
 
+            services.AddHttpContextAccessor();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
