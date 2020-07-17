@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem", "HotelSystem\HotelSystem.csproj", "{D0B6AA65-21B4-4FE0-B224-CEAEA73F470C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Identity", "HotelSystem.Identity\HotelSystem.Identity.csproj", "{6D25D40C-7BA6-48FE-9188-E06079251661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Identity", "HotelSystem.Identity\HotelSystem.Identity.csproj", "{6D25D40C-7BA6-48FE-9188-E06079251661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Common", "HotelSystem.Common\HotelSystem.Common.csproj", "{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Common", "HotelSystem.Common\HotelSystem.Common.csproj", "{77FB6E0F-B7D8-4B50-B5BE-D5031097DE75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Statistics", "HotelSystem.Statistics\HotelSystem.Statistics.csproj", "{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Statistics", "HotelSystem.Statistics\HotelSystem.Statistics.csproj", "{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
