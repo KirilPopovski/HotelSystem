@@ -16,7 +16,8 @@ namespace HotelSystem.Common.Infrastructure
             services
                 .AddDatabase<TDbContext>(configuration)
                 .AddApplicationSettings(configuration)
-                .AddTokenAuthentication(configuration);
+                .AddTokenAuthentication(configuration)
+                .AddControllers();
             return services;
         }
 

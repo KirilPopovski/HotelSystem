@@ -28,8 +28,7 @@ namespace HotelSystem
                 .AddWebService<GuestsDbContext>(this.Configuration)
                 .AddTransient<IGuestsService, GuestsService>()
                 .AddTransient<IReservationService, ReservationsService>()
-                .AddTransient<IHomeService, HomeService>()
-                .AddControllers();
+                .AddTransient<IHomeService, HomeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
