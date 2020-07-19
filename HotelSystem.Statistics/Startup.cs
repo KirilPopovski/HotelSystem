@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HotelSystem.Common.Infrastructure;
 using HotelSystem.Statistics.Data;
+using HotelSystem.Statistics.Services.Feedback;
+using HotelSystem.Statistics.Services.HotelViews;
+using HotelSystem.Statistics.Services.Statistics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace HotelSystem.Statistics
 {
@@ -28,6 +23,9 @@ namespace HotelSystem.Statistics
         {
             services
                 .AddWebService<StatisticsDbContext>(this.Configuration);
+            services.AddTransient<IStatisticsService, StatisticsService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IHotelViewService, HotelViewService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

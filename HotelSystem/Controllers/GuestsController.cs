@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Common.Controllers;
+using HotelSystem.Common.Infrastructure;
 using HotelSystem.Common.Services;
 using HotelSystem.Common.Services.Identity;
 using HotelSystem.Data.Models;
@@ -6,6 +7,8 @@ using HotelSystem.Models.Guests;
 using HotelSystem.Services.Guests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HotelSystem.Controllers
@@ -81,6 +84,13 @@ namespace HotelSystem.Controllers
 
             await guests.Save(guest);
             return Ok();
+        }
+
+        [HttpGet]
+        [AuthorizeAdministrator]
+        public async Task<IEnumerable<GuestDetailsOutputModel>> All()
+        {
+            return await this.guests.GetAll();
         }
     }
 }

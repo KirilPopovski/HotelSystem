@@ -1,5 +1,6 @@
 ﻿using HotelSystem.Admin.Models.Guests;
 using HotelSystem.Admin.Services.Guests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace HotelSystem.Admin.Controllers
             this.guests = guests;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
             => View(await this.guests.All());
 

@@ -1,4 +1,5 @@
-﻿using HotelSystem.Common.Services;
+﻿using HotelSystem.Common.Controllers;
+using HotelSystem.Common.Services;
 using HotelSystem.Common.Services.Identity;
 using HotelSystem.Statistics.Models.Feedback;
 using HotelSystem.Statistics.Services.Feedback;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Statistics.Controllers
 {
-    public class FeedbackController
+    public class FeedbackController : ApiController
     {
         private readonly IFeedbackService feedbackService;
         private readonly ICurrentUserService currentUser;

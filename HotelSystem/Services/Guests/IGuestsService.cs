@@ -1,5 +1,6 @@
 ﻿using HotelSystem.Data.Models;
 using HotelSystem.Models.Guests;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HotelSystem.Services.Guests
@@ -16,9 +17,11 @@ namespace HotelSystem.Services.Guests
 
         public Task<Guest> FindByUser(string userId);
 
-        Task<GuestDetailsOutputModel> GetDetails(int id);
+        public Task<GuestDetailsOutputModel> GetDetails(int id);
 
 
         public Task<bool> IsGuest(string userId);
+
+        public Task<IEnumerable<GuestDetailsOutputModel>> GetAll();
     }
 }

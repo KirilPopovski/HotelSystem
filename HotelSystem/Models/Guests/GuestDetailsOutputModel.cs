@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HotelSystem.Models.Guests
+﻿namespace HotelSystem.Models.Guests
 {
     public class GuestDetailsOutputModel
     {

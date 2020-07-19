@@ -3,6 +3,8 @@ using HotelSystem.Data.Models;
 using HotelSystem.Models.Guests;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +29,19 @@ namespace HotelSystem.Services.Guests
         {
             var guest = await this.db.Guests.FirstOrDefaultAsync(x => x.ApplicationUserId == userId);
             return guest;
+        }
+
+        public async Task<IEnumerable<GuestDetailsOutputModel>> GetAll()
+        {
+            var model = await this.db.Guests.Select(g => new GuestDetailsOutputModel
+            {
+                Id = g.Id,
+                Name = g.Name,
+                EGN = g.EGN,
+                CardNumber = g.CardNumber,
+            })
+                .ToListAsync();
+            return model;
         }
 
         public int GetContactsId(string email)

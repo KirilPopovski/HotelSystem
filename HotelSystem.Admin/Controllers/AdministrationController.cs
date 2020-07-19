@@ -1,4 +1,4 @@
-﻿using HotelSystem.Admin.Infrastructure;
+﻿using HotelSystem.Common.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Refit;

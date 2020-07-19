@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Statistics", "H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Admin", "HotelSystem.Admin\HotelSystem.Admin.csproj", "{AD803254-798C-435B-93DA-CC4364C703B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Guests.Gateway", "HotelSystem.Guests.Gateway\HotelSystem.Guests.Gateway.csproj", "{64EE6557-C228-4A34-B1AB-7459E7F63E0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AD803254-798C-435B-93DA-CC4364C703B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD803254-798C-435B-93DA-CC4364C703B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD803254-798C-435B-93DA-CC4364C703B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
