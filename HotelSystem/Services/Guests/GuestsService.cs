@@ -1,5 +1,6 @@
 ﻿using HotelSystem.Data;
 using HotelSystem.Data.Models;
+using HotelSystem.Models.Guests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -32,6 +33,19 @@ namespace HotelSystem.Services.Guests
         {
             int result = db.GuestContacts.FirstOrDefault(x => x.Email == email).Id;
             return result;
+        }
+
+        public async Task<GuestDetailsOutputModel> GetDetails(int id)
+        {
+            var guest = await this.db.Guests.FirstOrDefaultAsync(g => g.Id == id);
+            var model = new GuestDetailsOutputModel
+            {
+                Id = guest.Id,
+                EGN = guest.EGN,
+                CardNumber = guest.CardNumber,
+                Name = guest.Name
+            };
+            return model;
         }
 
         public async Task<int> GetIdByUser(string userId)

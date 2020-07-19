@@ -1,4 +1,5 @@
 using HotelSystem.Common.Infrastructure;
+using HotelSystem.Common.Services;
 using HotelSystem.Identity.Data;
 using HotelSystem.Identity.Infrastructure;
 using HotelSystem.Identity.Services.Identity;
@@ -23,6 +24,7 @@ namespace HotelSystem.Identity
         {
             services.AddWebService<IdentityDbContext>(this.Configuration)
                 .AddUserStorage()
+                .AddTransient<IDataSeeder, IdentityDataSeeder>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
         }

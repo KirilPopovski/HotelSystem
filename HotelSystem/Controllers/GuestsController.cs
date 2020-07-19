@@ -23,6 +23,11 @@ namespace HotelSystem.Controllers
             this.currentUser = currentUser;
         }
 
+        [HttpGet]
+        [Route(Id)]
+        public async Task<ActionResult<GuestDetailsOutputModel>> Details(int id)
+            => await this.guests.GetDetails(id);
+
         [HttpPut]
         [Authorize]
         [Route(Id)]
