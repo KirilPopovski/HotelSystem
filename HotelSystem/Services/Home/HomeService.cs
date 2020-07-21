@@ -21,5 +21,21 @@ namespace HotelSystem.Services.Home
             var hotels = await db.Hotels.Select(x => new HotelViewModel { Address = x.Address, Name = x.Name, ImageUrl = x.ImageUrl }).ToListAsync();
             return hotels;
         }
+
+        public async Task<HotelViewModel> GetDetails(int id)
+        {
+            var hotel =await  this.db.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+            if (hotel != null)
+            {
+                var model = new HotelViewModel
+                {
+                    Address = hotel.Address,
+                    ImageUrl = hotel.ImageUrl,
+                    Name = hotel.Name,
+                };
+                return model;
+            }
+            else return null;
+        }
     }
 }

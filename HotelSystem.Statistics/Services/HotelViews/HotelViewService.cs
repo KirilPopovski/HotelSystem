@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Statistics.Data;
+using HotelSystem.Statistics.Data.Models;
 using HotelSystem.Statistics.Models.HotelViews;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -14,6 +15,13 @@ namespace HotelSystem.Statistics.Services.HotelViews
         public HotelViewService(StatisticsDbContext db)
         {
             this.db = db;
+        }
+
+        public async Task AddHotelView(int hotelId)
+        {
+            var view = new HotelView { HotelId = hotelId };
+            await this.db.HotelViews.AddAsync(view);
+            await db.SaveChangesAsync();
         }
 
         public int GetTotalViews(int id)

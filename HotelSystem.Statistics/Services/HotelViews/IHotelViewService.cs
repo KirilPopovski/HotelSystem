@@ -9,5 +9,6 @@ namespace HotelSystem.Statistics.Services.HotelViews
         public int GetTotalViews(int id);
 
         public Task<IEnumerable<HotelViewsOutputModel>> GetTotalViews(IEnumerable<int> ids);
+        public Task AddHotelView(int hotelId);
     }
 }

@@ -6,5 +6,7 @@ namespace HotelSystem.Statistics.Services.Statistics
     public interface IStatisticsService
     {
         public Task<int> All();
+
+        public Task AddReservation();
     }
 }

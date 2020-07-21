@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Statistics.Data;
+using HotelSystem.Statistics.Data.Models;
 using HotelSystem.Statistics.Models.Statistics;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -14,6 +15,17 @@ namespace HotelSystem.Statistics.Services.Statistics
         {
             this.db = db;
         }
+
+        public async Task AddReservation()
+        {
+            var stat = new StatisticsModel
+            {
+                TotalReservations = 1,
+            };
+            await db.Statistics.AddAsync(stat);
+            await db.SaveChangesAsync();
+        }
+
         public async Task<int> All()
         {
             return await this.db.Statistics.Select(x => x.TotalReservations).SumAsync();

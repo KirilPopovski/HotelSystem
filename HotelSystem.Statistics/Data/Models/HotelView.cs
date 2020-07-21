@@ -9,8 +9,5 @@ namespace HotelSystem.Statistics.Data.Models
 
         [Required]
         public int HotelId { get; set; }
-
-        [Required]
-        public string UserId { get; set; }
     }
 }
