@@ -34,7 +34,11 @@ namespace HotelSystem
                 {
                     x.AddBus(context => Bus.Factory.CreateUsingRabbitMq(cfg =>
                     {
-                        cfg.Host("localhost");
+                        cfg.Host("rabbitmq", host =>
+                        {
+                            host.Username("rabbitmq");
+                            host.Password("rabbitmq");
+                        });
                     }));
                 })
                 .AddMassTransitHostedService();
