@@ -9,6 +9,6 @@ export class ReservationsService{
             
     }
     public getReservations() :Observable<Array<IReservation>>{
-        return this.client.get<Array<IReservation>>('https://localhost:5001/Home/Index');
+        return this.client.get<Array<IReservation>>('http://localhost:5001/Home/Index');
     }
 }
