@@ -1,9 +1,11 @@
-﻿using HotelSystem.Data.Models;
+﻿using HotelSystem.Common.Data;
+using HotelSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace HotelSystem.Data
 {
-    public class GuestsDbContext : DbContext
+    public class GuestsDbContext : MessageDbContext
     {
         public GuestsDbContext(DbContextOptions<GuestsDbContext> options)
             : base(options)
@@ -25,5 +27,7 @@ namespace HotelSystem.Data
         public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Service> Services { get; set; }
+
+        protected override Assembly ConfigurationsAssembly => Assembly.GetExecutingAssembly();
     }
 }

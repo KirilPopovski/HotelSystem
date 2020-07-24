@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 namespace HotelSystem.Common.Infrastructure
@@ -27,7 +28,16 @@ namespace HotelSystem.Common.Infrastructure
             services
                 .AddScoped<DbContext, TDbContext>()
                 .AddDbContext<TDbContext>(
-                options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 10,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+                    }
+                    ));
             return services;
         }
 

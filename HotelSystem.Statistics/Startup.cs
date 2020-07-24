@@ -1,3 +1,4 @@
+using GreenPipes;
 using HotelSystem.Common.Infrastructure;
 using HotelSystem.Statistics.Data;
 using HotelSystem.Statistics.Messages;
@@ -43,10 +44,14 @@ namespace HotelSystem.Statistics
 
                         cfg.ReceiveEndpoint(nameof(ReservationCreatedConsumer), endpoint =>
                         {
+                            endpoint.PrefetchCount = 8;
+                            endpoint.UseMessageRetry(x => x.Interval(5, 100));
                             endpoint.ConfigureConsumer<ReservationCreatedConsumer>(context);
                         });
                         cfg.ReceiveEndpoint(nameof(HotelVisitedConsumer), endpoint =>
                         {
+                            endpoint.PrefetchCount = 8;
+                            endpoint.UseMessageRetry(x => x.Interval(5, 100));
                             endpoint.ConfigureConsumer<HotelVisitedConsumer>(context);
                         });
                     }));

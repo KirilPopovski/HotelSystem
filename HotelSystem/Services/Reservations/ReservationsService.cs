@@ -1,4 +1,5 @@
-﻿using HotelSystem.Data;
+﻿using HotelSystem.Common.Data.Models;
+using HotelSystem.Data;
 using HotelSystem.Data.Models;
 using HotelSystem.Models.Reservations;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace HotelSystem.Services.Reservations
             this.db = db;
         }
 
-        public async Task<int> AddReservation(DateTime checkIn, DateTime checkOut, string hotelName, int numberOfPeople, int guestId)
+        public async Task<int> AddReservation(DateTime checkIn, DateTime checkOut, string hotelName, int numberOfPeople, int guestId, params Message[] messages)
         {
             var room = this.db.Rooms.FirstOrDefault(x => x.Hotel.Name == hotelName && x.Capacity == numberOfPeople);
             if(room == null)
@@ -32,9 +33,22 @@ namespace HotelSystem.Services.Reservations
                 GuestId = guestId,
                 RoomId = room.Id,
             };
+            foreach (var message in messages)
+            {
+                await this.db.Messages.AddAsync(message);
+            }
             await this.db.Reservations.AddAsync(reservation);
             await this.db.SaveChangesAsync();
             return 0;
+        }
+
+        public async Task MarkMessageAsPublished(int id)
+        {
+            var message = await this.db.FindAsync<Message>(id);
+
+            message.MarkAsPublished();
+
+            await this.db.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<ReservationViewModel>> GetAllReservations(int guestId)

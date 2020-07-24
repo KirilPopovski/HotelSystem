@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Common.Controllers;
+using HotelSystem.Common.Data.Models;
 using HotelSystem.Common.Messages.Guests;
 using HotelSystem.Common.Services.Identity;
 using HotelSystem.Models.Reservations;
@@ -47,13 +48,16 @@ namespace HotelSystem.Controllers
         public async Task<IActionResult> New(ReservationInputModel input)
         {
             var guestId = await guestsService.GetIdByUser(currentUser.UserId);
-            var result = await this.reservationService.AddReservation(input.ChechIn, input.CheckOut, input.HotelName, input.NumberOfPeople, guestId);
+            var messageData = new ReservationCreatedMessage
+            {
+                ReservationCount = 1
+            };
+            var message = new Message(messageData);
+            var result = await this.reservationService.AddReservation(input.ChechIn, input.CheckOut, input.HotelName, input.NumberOfPeople, guestId, message);
             if (result >= 0)
             {
-                await this.publisher.Publish(new ReservationCreatedMessage
-                {
-                    ReservationCount = 1
-                });
+                await this.publisher.Publish(messageData);
+                await this.reservationService.MarkMessageAsPublished(message.Id);
                 return Ok();
             }
             return NotFound();

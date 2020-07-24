@@ -1,5 +1,7 @@
+using Hangfire;
 using HotelSystem.Common;
 using HotelSystem.Common.Infrastructure;
+using HotelSystem.Common.Messages;
 using HotelSystem.Data;
 using HotelSystem.Services.Guests;
 using HotelSystem.Services.Home;
@@ -42,9 +44,19 @@ namespace HotelSystem
                     }));
                 })
                 .AddMassTransitHostedService();
+
+            services
+                .AddHangfire(config => config
+                    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                    .UseSimpleAssemblyNameTypeSerializer()
+                    .UseRecommendedSerializerSettings()
+                    .UseSqlServerStorage(this.Configuration.GetDefaultConnectionString()));
+
+            services.AddHangfireServer();
+
+            services.AddHostedService<MessagesHostedService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWebService(env)
