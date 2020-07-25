@@ -42,6 +42,8 @@ namespace HotelSystem.Statistics
                             host.Password("rabbitmq");
                         });
 
+                        cfg.UseHealthCheck(context);
+
                         cfg.ReceiveEndpoint(nameof(ReservationCreatedConsumer), endpoint =>
                         {
                             endpoint.PrefetchCount = 8;

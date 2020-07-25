@@ -18,6 +18,7 @@ namespace HotelSystem.Common.Infrastructure
                 .AddDatabase<TDbContext>(configuration)
                 .AddApplicationSettings(configuration)
                 .AddTokenAuthentication(configuration)
+                .AddHealth(configuration)
                 .AddControllers();
             return services;
         }
@@ -46,6 +47,21 @@ namespace HotelSystem.Common.Infrastructure
             services
                 .Configure<ApplicationSettings>(configuration
                     .GetSection(nameof(ApplicationSettings)));
+            return services;
+        }
+
+        public static IServiceCollection AddHealth(
+            this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            var healthChecks = services.AddHealthChecks();
+
+            healthChecks
+                .AddSqlServer(configuration.GetDefaultConnectionString());
+
+            healthChecks
+                .AddRabbitMQ(rabbitConnectionString: "amqp://rabbitmq:rabbitmq@rabbitmq/");
+
             return services;
         }
 

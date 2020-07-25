@@ -41,6 +41,8 @@ namespace HotelSystem
                             host.Username("rabbitmq");
                             host.Password("rabbitmq");
                         });
+
+                        cfg.UseHealthCheck(context);
                     }));
                 })
                 .AddMassTransitHostedService();

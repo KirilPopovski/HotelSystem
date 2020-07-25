@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Common", "Hotel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Statistics", "HotelSystem.Statistics\HotelSystem.Statistics.csproj", "{D55AC4C5-A6DD-47C5-9850-B3E2B0B64234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Admin", "HotelSystem.Admin\HotelSystem.Admin.csproj", "{AD803254-798C-435B-93DA-CC4364C703B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Admin", "HotelSystem.Admin\HotelSystem.Admin.csproj", "{AD803254-798C-435B-93DA-CC4364C703B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Guests.Gateway", "HotelSystem.Guests.Gateway\HotelSystem.Guests.Gateway.csproj", "{64EE6557-C228-4A34-B1AB-7459E7F63E0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelSystem.Guests.Gateway", "HotelSystem.Guests.Gateway\HotelSystem.Guests.Gateway.csproj", "{64EE6557-C228-4A34-B1AB-7459E7F63E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelSystem.Watchdog", "HotelSystem.Watchdog\HotelSystem.Watchdog.csproj", "{D7B70B87-1E22-4F9D-B751-0EACD0AF2F29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64EE6557-C228-4A34-B1AB-7459E7F63E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B70B87-1E22-4F9D-B751-0EACD0AF2F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B70B87-1E22-4F9D-B751-0EACD0AF2F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B70B87-1E22-4F9D-B751-0EACD0AF2F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B70B87-1E22-4F9D-B751-0EACD0AF2F29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
