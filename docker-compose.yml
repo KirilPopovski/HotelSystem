@@ -1,0 +1,106 @@
+version: "3.8"
+
+services:
+    data:
+        container_name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+            - "1433:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=Camry@2020
+        volumes:
+            - sqldata:/var/opt/mssql
+        networks:  
+            - hotelsystem-network
+            
+    messages:
+        container_name: rabbitmq
+        image: rabbitmq:3-management
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        hostname: "rabbitmq"
+        environment:
+            - RABBITMQ_ERLANG_COOKIE=Rand0mR4bbitMqCo0k1e
+            - RABBITMQ_DEFAULT_USER=rabbitmq
+            - RABBITMQ_DEFAULT_PASS=rabbitmq
+        networks: 
+            - hotelsystem-network
+            
+    identity:
+        container_name: identity
+        build:
+            context: ./HotelSystem
+            dockerfile: ./HotelSystem.Identity/Dockerfile
+        ports: 
+            - "5003:80"
+        env_file: HotelSystem/HotelSystem.Common/Common.env
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=HotelIdentityDatabase;User Id=sa; Password=Camry@2020;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            - ./.aspnet/identity/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks: 
+            - hotelsystem-network
+        depends_on:
+            - data
+            
+    guests:
+        container_name: guests
+        build:
+            context: ./HotelSystem
+            dockerfile: ./HotelSystem/Dockerfile
+        ports: 
+            - "5001:80"
+        env_file: HotelSystem/HotelSystem.Common/Common.env
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=HotelGuestsDatabase;User Id=sa; Password=Camry@2020;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            - ./.aspnet/guests/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks: 
+            - hotelsystem-network
+        depends_on:
+            - data
+            
+    statistics:
+        container_name: statistics
+        build:
+            context: ./HotelSystem
+            dockerfile: ./HotelSystem.Statistics/Dockerfile
+        ports: 
+            - "5005:80"
+        env_file: HotelSystem/HotelSystem.Common/Common.env
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=HotelStatisticsDatabase;User Id=sa; Password=Camry@2020;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            - ./.aspnet/statistics/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks: 
+            - hotelsystem-network
+        depends_on:
+            - data
+            
+    admin:
+        container_name: admin
+        build:
+            context: ./HotelSystem
+            dockerfile: ./HotelSystem.Admin/Dockerfile
+        ports: 
+            - "5011:80"
+        env_file: HotelSystem/HotelSystem.Common/Common.env        
+        restart: on-failure
+        volumes:
+            - ./.aspnet/admin/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks: 
+            - hotelsystem-network
+        depends_on:
+            - data
+            
+networks:
+    hotelsystem-network:
+    
+volumes:
+    sqldata:
+    
